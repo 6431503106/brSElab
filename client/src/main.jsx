@@ -7,7 +7,6 @@ import './index.css';
 import HomeScreen from './screens/HomeScreen.jsx'
 import ProductScreen from './screens/ProductScreen.jsx'
 import store from './store.js'
-import SearchScreen from './components/SearchScreen';
 import CartScreen from './screens/CartScreen.jsx'
 import ContactUsScreen from './screens/ContactUsScreen.jsx'
 import ManageMessages from './screens/admin/ManageMessages.jsx'
@@ -41,7 +40,6 @@ const router = createBrowserRouter(
     <Route path='/' element={< App />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/search/:keyword' element={<HomeScreen />} />
-      <Route path="/search" element={<SearchScreen />} />
       <Route path='/product/:id' element={<ProductScreen />} />
       <Route path='/cart' element={<CartScreen />} />
       <Route path='/contactUs' element={<ContactUsScreen />} />
