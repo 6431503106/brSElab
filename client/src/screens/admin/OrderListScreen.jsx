@@ -178,7 +178,7 @@ export default function OrderListScreen() {
                 <td className='px-7 py-3 whitespace-nowrap border'>
                   {item.returnDate
                     ? new Date(item.returnDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })
-                    : 'Not return This items.'}
+                    : '-'}
                 </td>
                 <td className={`px-7 py-3 whitespace-nowrap border ${item.status === 'Pending' ? 'text-yellow-500' : ''}`}>{item.status}</td>
                 <td className='px-7 py-3 whitespace-nowrap border'>
@@ -239,7 +239,7 @@ export default function OrderListScreen() {
               <p><span className="font-semibold">Order ID:</span> {selectedOrder._id}</p>
               <p><span className="font-semibold">User Name:</span> {selectedOrder.user?.name}</p>
               <p><span className="font-semibold">Borrow Date:</span> {selectedItem.borrowingDate ? new Date(selectedItem.borrowingDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' }) : 'N/A'}</p>
-              <p><span className="font-semibold">Return Date:</span> {selectedItem.returnDate ? new Date(selectedItem.returnDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' }) : 'Not return This items.'}</p>
+              <p><span className="font-semibold">Return Date:</span> {selectedItem.returnDate ? new Date(selectedItem.returnDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' }) : '-'}</p>
               <p><span className="font-semibold">Reason:</span> {selectedItem.reason || 'N/A'}</p>
               <div className="mt-4">
                 <h3><span className="font-semibold">Status: </span>

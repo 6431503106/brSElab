@@ -262,7 +262,7 @@ export default function OrderListScreen() {
       <td className='px-7 py-3 whitespace-nowrap border'>
         {item.returnDate
           ? new Date(item.returnDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })
-          : 'Not return This items.'}
+          : '-'}
       </td>
       <td className={`px-7 py-3 whitespace-nowrap border ${item.status === 'Confirm' ? 'text-green-500' : ''}`}>{item.status}</td>
       <td className='px-7 py-3 whitespace-nowrap border'>

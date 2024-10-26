@@ -26,11 +26,13 @@ import '../Header.css';
 const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
     const [logoutApi] = useLogoutMutation();
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
     const { userInfo } = useSelector(state => state.user);
     const { data: categories, isLoading: loadingCategories, error } = useGetCategoriesQuery();
+    
+    // State to store search keyword
+    const [keyword, setKeyword] = useState('');
 
     const handleLogout = async () => {
         try {
@@ -45,6 +47,12 @@ const Header = () => {
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    const handleSearch = () => {
+        if (keyword.trim()) {
+            navigate(`/search?keyword=${encodeURIComponent(keyword)}`);
+        }
     };
 
     useEffect(() => {
@@ -106,14 +114,31 @@ const Header = () => {
 
     return (
         <>
-            <nav className={`main-header navbar navbar-expand navbar-white navbar-light ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" data-widget="pushmenu" href="#" onClick={toggleSidebar}>
-                            {isSidebarOpen ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
-                        </a>
-                    </li>
+            <nav className={`main-header navbar navbar-expand navbar-white navbar-light ${isSidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <a className="nav-link" data-widget="pushmenu" href="#" onClick={toggleSidebar}>
+                        {isSidebarOpen ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+                    </a>
+                </li>
+
+                    <div className="flex items-center justify-between ml-auto">
+                    <input
+                        type="text"
+                        placeholder="Search"
+                        className="ml-4 p-2 rounded-md bg-white-700 text-back hidden sm:block"
+                        value={keyword}
+                        onChange={e => setKeyword(e.target.value)}
+                    />
+                    <button 
+                        className="bg-blue-500 text-white py-2 px-4 rounded-md hidden sm:block ml-2"
+                        onClick={handleSearch}
+                    >
+                        Search
+                    </button>
+                </div>
                 </ul>
+                
                 <ul className="navbar-nav ml-auto">
                     {userInfo && (
                         <>
@@ -136,6 +161,7 @@ const Header = () => {
                     )}
                 </ul>
             </nav>
+            {/* Sidebar menu */}
             <div className="menu">
                 <Menu 
                     defaultSelectedKeys={['1']}
@@ -143,10 +169,10 @@ const Header = () => {
                     theme="dark"
                     inlineCollapsed={!isSidebarOpen}
                 >
-                    <div className={`brand-link flex justify-center mb-12 ${isSidebarOpen ? 'brand-link--active' : ''}`}>
-                        <img src="/images/icon.png" alt="Admin Logo" className={`brand-image img-circle mr-2`} />
-                        <div className={`brand-text text-white ${isSidebarOpen ? '' : 'hide'}`}>SE LAB MFU</div>
-                    </div>
+                    <Link to="/" className="brand-link">
+    <img src="/images/icon.png" alt="Admin Logo" className="brand-image img-circle mr-2" />
+    <span className={`brand-text text-white ${isSidebarOpen ? '' : 'hide'}`}>SE LAB MFU</span>
+</Link>
                     {userInfo && userInfo.isAdmin && (
                         <Menu.SubMenu key="sub2" icon={<AppstoreOutlined />} title="Admin">
                             <Menu.SubMenu key="sub3" icon={<ToolOutlined />} title="Management"> 

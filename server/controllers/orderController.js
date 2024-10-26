@@ -298,7 +298,7 @@ const updateOrderItemStatus = asyncHandler(async (req, res) => {
     let subject, message;
     if (status === "Confirm") {
       subject = 'Status notification from SE LAB';
-      message = `Dear ${order.user.name},\n\nYour request for the ${item.name} has been confirmed!\n\nBorrowing Date: ${borrowingDate}\n\nThank you.`;
+      message = `Dear ${order.user.name},\n\nYour request for the ${item.name} has been confirmed!\n\nBorrowing Date: ${borrowingDate}\n\nClick this link https://brselab.onrender.com/ \nThank you.`;
     } else if (status === "Cancel") {
       subject = 'Status notification from SE LAB';
       message = `Dear ${order.user.name},\n\nYour request has been canceled.\n\nProduct name: ${item.name}\n\nIf you have any questions, please contact us.`;

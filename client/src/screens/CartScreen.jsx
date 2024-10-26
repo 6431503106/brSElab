@@ -116,8 +116,8 @@ export default function CartScreen() {
         <div className="w-full max-w-6xl flex flex-col md:flex-row">
           
           {/* Left Section: Cart Items */}
-          <div className="md:w-2/3 p-6 bg-white ">
-            <div className="mb-4">
+          <div className="md:w-2/4 p-6 bg-white ">
+            <div className="ml-1">
               <Link to="/">
                 <button className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors duration-300">
                   Back
@@ -150,7 +150,7 @@ export default function CartScreen() {
           </div>
 
           {/* Right Section: Borrowing Information */}
-          <div className="mx-auto mt-8 mb-28 p-4 max-w-md">
+          <div className=" mt-8 mb-28 p-4 max-w-md">
           <div>
             <h2 className="text-xl font-semibold">Total Items: {totalItems}</h2>
           </div>

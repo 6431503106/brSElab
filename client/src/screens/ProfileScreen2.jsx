@@ -209,14 +209,14 @@ export default function ProfileScreen() {
                                 <td className='px-7 py-3 text-center border'>{item.name}</td>
                                 <td className='px-7 py-3 whitespace-nowrap text-center border '>{item.qty}</td>
                                 <td className='px-7 py-3 whitespace-nowrap text-center border'>
-                                    {new Date(item.order.createdAt).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })}
+                                    {new Date(item.borrowingDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })}
                                 </td>
                                 <td className='px-7 py-3 whitespace-nowrap text-center border'>
                 {item.returnDate
                     ? new Date(item.returnDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })
                     : item.returnedDate 
                     ? new Date(item.returnedDate).toLocaleDateString('us', { year: 'numeric', month: 'long', day: '2-digit' })
-                    : "Not return This items."}
+                    : "-"}
                     
                 </td>
                                 <td className={`text-center px-7 py-3  text-center whitespace-nowrap  ${getStatusClass(item.status)}`}>{item.status}</td>
