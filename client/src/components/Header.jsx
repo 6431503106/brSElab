@@ -144,7 +144,7 @@ const Header = () => {
                     inlineCollapsed={!isSidebarOpen}
                 >
                     <div className={`brand-link flex justify-center mb-12 ${isSidebarOpen ? 'brand-link--active' : ''}`}>
-                        <img src="../../public/images/icon.png" alt="Admin Logo" className={`brand-image img-circle mr-2`} />
+                        <img src="/images/icon.png" alt="Admin Logo" className={`brand-image img-circle mr-2`} />
                         <div className={`brand-text text-white ${isSidebarOpen ? '' : 'hide'}`}>SE LAB MFU</div>
                     </div>
                     {userInfo && userInfo.isAdmin && (
